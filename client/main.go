@@ -26,7 +26,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	pb "grpc/proto/index"
+	pb "github.com/liuli299/grpc-framework/proto/index"
 )
 
 const (

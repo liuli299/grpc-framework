@@ -4,7 +4,7 @@ import (
 	"time"
 	"fmt"
 	"golang.org/x/net/context"
-	pb "grpc/proto/index"
+	pb "github.com/liuli299/grpc-framework/proto/index"
 	)
 
 func (s *Server) Test(ctx context.Context, in *pb.IndexRequest) (*pb.IndexReply, error) {

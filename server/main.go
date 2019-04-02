@@ -26,8 +26,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	pb "grpc/proto/index"
-	"grpc/server/controller"
+	pb "github.com/liuli299/grpc-framework/proto/index"
+	"github.com/liuli299/grpc-framework/server/controller"
 )
 
 const (
