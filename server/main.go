@@ -12,11 +12,11 @@ import (
 )
 
 const (
-	addr = ":9090"
+	address = "127.0.0.1:9090"
 )
 
 func main() {
-	lis, err := net.Listen("tcp", addr)
+	lis, err := net.Listen("tcp", address)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

@@ -13,8 +13,9 @@ import (
 )
 
 var (
-	proxyAddr = ":8080"
-	endpoint = flag.String("grpc_server", "127.0.0.1:9090", "endpoint of IndexServer")
+	proxyAddress = "127.0.0.1:8080"
+	grpcAddress = "127.0.0.1:9090"
+	endpoint = flag.String("grpc_server", grpcAddress, "endpoint of IndexServer")
 )
 
 func main() {
@@ -29,7 +30,7 @@ func main() {
 		log.Fatalf("failed to register: %v", err)
 	}
 
-	err = http.ListenAndServe(proxyAddr, mux)
+	err = http.ListenAndServe(proxyAddress, mux)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
