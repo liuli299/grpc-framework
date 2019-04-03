@@ -20,11 +20,25 @@ option java_outer_classname = "IndexProto";
 
 package index;
 
+import "google/api/annotations.proto";
+
 // The service definition.
 service Index {
-  // test
-  rpc Test (IndexRequest) returns (IndexReply) {}
-  rpc Alie (IndexRequest) returns (IndexReply) {}
+  // Test
+  rpc Test (IndexRequest) returns (IndexReply) {
+        option (google.api.http) = {
+            post: "/test"
+            body: "*"
+        };
+
+    }
+
+  rpc Alie (IndexRequest) returns (IndexReply) {
+        option (google.api.http) = {
+            get: "/alie"
+        };
+
+    }
 }
 
 // The request message definition.

@@ -30,7 +30,7 @@ import (
 )
 
 const (
-	address     = "127.0.0.1:60051"
+	address     = "127.0.0.1:9090"
 	defaultName = "world"
 )
 
@@ -51,11 +51,6 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 	r, err := c.Test(ctx, &pb.IndexRequest{Name: name})
-	if err != nil {
-		log.Fatalf("could not greet: %v", err)
-	}
-	log.Printf("Greeting: %s", r.Message)
-	r, err = c.Alie(ctx, &pb.IndexRequest{Name: name})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
