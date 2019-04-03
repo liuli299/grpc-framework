@@ -24,7 +24,7 @@ http://localhost:8080/alie?name=mmd   //http请求示例
 3. client：客户端示例
 
 > 高级教程
-> 如果你想修改proto文件，需要安装一些依赖
+如果你想修改proto文件，需要安装一些依赖
 1. [protobuf](https://github.com/protocolbuffers/protobuf/releases)
 2. [grpc](https://grpc.io/docs/quickstart/go.html)
 3. [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
