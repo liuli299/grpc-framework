@@ -10,12 +10,12 @@ go run client/main.go                 //grpc客户端请求示例
 http://localhost:8080/alie?name=mmd   //http请求示例
 ```
 
-> 要求：
+要求：
 1. 使用go mod管理依赖 go version >= 1.11
 2. protobuf
 3. grpc
 
-> 目录文件说明：
+目录文件说明：
 1. proto：.proto文件目录
 2. server：服务端逻辑
   - controller: 具体服务端逻辑实现
@@ -29,7 +29,7 @@ http://localhost:8080/alie?name=mmd   //http请求示例
 2. [grpc](https://grpc.io/docs/quickstart/go.html)
 3. [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway)
 
-> 依赖安装好之后，可按照以下步骤实现自己的逻辑
+依赖安装好之后，可按照以下步骤实现自己的逻辑
 1. 修改.proto文件
 2. 执行 sh build.sh
 3. 在 server/controller里面添加具体接口实现逻辑
