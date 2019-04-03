@@ -2,10 +2,15 @@
 最简单的grpc框架
 
 > git clone https://github.com/liuli299/grpc-framework.git
+
 > cd grpc-framework
+
 > go run server/main.go                 //启动grpc服务
+
 > go run server/proxy.go                //启动代理服务。支持http请求
+
 > go run client/main.go                 //grpc客户端请求示例
+
 > http://localhost:8080/alie?name=mmd   //http请求示例
 
 要求：
