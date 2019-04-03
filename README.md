@@ -1,6 +1,8 @@
 # grpc-framework
 最简单的grpc框架
 
+> git clone https://github.com/liuli299/grpc-framework.git
+
 要求：
 1. 使用go mod管理依赖 go version >= 1.11
 2. protobuf
