@@ -50,9 +50,9 @@ func main() {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.Test(ctx, &pb.IndexRequest{Name: name})
+	r, err := c.Post(ctx, &pb.IndexRequest{Uid: name})
 	if err != nil {
 		log.Fatalf("could not greet: %v", err)
 	}
-	log.Printf("Greeting: %s", r.Message)
+	log.Printf("Greeting: %s", r.Data)
 }

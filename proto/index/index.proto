@@ -25,28 +25,38 @@ import "google/api/annotations.proto";
 // The service definition.
 service Index {
   // Test
-  rpc Test (IndexRequest) returns (IndexReply) {
+  rpc Post (IndexRequest) returns (IndexReply) {
         option (google.api.http) = {
-            post: "/test"
+            post: "/v1/post"
             body: "*"
         };
 
     }
 
-  rpc Alie (IndexRequest) returns (IndexReply) {
+  rpc Get (IndexRequest) returns (IndexReply) {
         option (google.api.http) = {
-            get: "/alie"
+            get: "/v1/get"
         };
 
     }
 }
 
-// The request message definition.
+// IndexRequest definition.
 message IndexRequest {
-  string name = 1;
+  string uid = 3;
+  int32 num = 1;
+  int32 page = 2;
 }
 
-// The response message definition.
+// Data definition.
+message Data {
+  string title = 1;
+  string img = 2;
+  string url = 3;
+}
+
+// IndexReply definition.
 message IndexReply {
-  string message = 1;
+  int32 code = 1;
+  repeated Data data = 2;
 }

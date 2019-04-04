@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	address = "127.0.0.1:9090"
+	address = ":9090"
 )
 
 func main() {

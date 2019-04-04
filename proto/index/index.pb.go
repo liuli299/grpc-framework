@@ -25,9 +25,11 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// The request message definition.
+// IndexRequest definition.
 type IndexRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Uid                  string   `protobuf:"bytes,3,opt,name=uid,proto3" json:"uid,omitempty"`
+	Num                  int32    `protobuf:"varint,1,opt,name=num,proto3" json:"num,omitempty"`
+	Page                 int32    `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -58,16 +60,87 @@ func (m *IndexRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_IndexRequest proto.InternalMessageInfo
 
-func (m *IndexRequest) GetName() string {
+func (m *IndexRequest) GetUid() string {
 	if m != nil {
-		return m.Name
+		return m.Uid
 	}
 	return ""
 }
 
-// The response message definition.
+func (m *IndexRequest) GetNum() int32 {
+	if m != nil {
+		return m.Num
+	}
+	return 0
+}
+
+func (m *IndexRequest) GetPage() int32 {
+	if m != nil {
+		return m.Page
+	}
+	return 0
+}
+
+// Data definition.
+type Data struct {
+	Title                string   `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Img                  string   `protobuf:"bytes,2,opt,name=img,proto3" json:"img,omitempty"`
+	Url                  string   `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Data) Reset()         { *m = Data{} }
+func (m *Data) String() string { return proto.CompactTextString(m) }
+func (*Data) ProtoMessage()    {}
+func (*Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_b5b8486092d5d3cd, []int{1}
+}
+
+func (m *Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Data.Unmarshal(m, b)
+}
+func (m *Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Data.Marshal(b, m, deterministic)
+}
+func (m *Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Data.Merge(m, src)
+}
+func (m *Data) XXX_Size() int {
+	return xxx_messageInfo_Data.Size(m)
+}
+func (m *Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Data proto.InternalMessageInfo
+
+func (m *Data) GetTitle() string {
+	if m != nil {
+		return m.Title
+	}
+	return ""
+}
+
+func (m *Data) GetImg() string {
+	if m != nil {
+		return m.Img
+	}
+	return ""
+}
+
+func (m *Data) GetUrl() string {
+	if m != nil {
+		return m.Url
+	}
+	return ""
+}
+
+// IndexReply definition.
 type IndexReply struct {
-	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Code                 int32    `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Data                 []*Data  `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -77,7 +150,7 @@ func (m *IndexReply) Reset()         { *m = IndexReply{} }
 func (m *IndexReply) String() string { return proto.CompactTextString(m) }
 func (*IndexReply) ProtoMessage()    {}
 func (*IndexReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_b5b8486092d5d3cd, []int{1}
+	return fileDescriptor_b5b8486092d5d3cd, []int{2}
 }
 
 func (m *IndexReply) XXX_Unmarshal(b []byte) error {
@@ -98,37 +171,50 @@ func (m *IndexReply) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_IndexReply proto.InternalMessageInfo
 
-func (m *IndexReply) GetMessage() string {
+func (m *IndexReply) GetCode() int32 {
 	if m != nil {
-		return m.Message
+		return m.Code
 	}
-	return ""
+	return 0
+}
+
+func (m *IndexReply) GetData() []*Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
 }
 
 func init() {
 	proto.RegisterType((*IndexRequest)(nil), "index.IndexRequest")
+	proto.RegisterType((*Data)(nil), "index.Data")
 	proto.RegisterType((*IndexReply)(nil), "index.IndexReply")
 }
 
 func init() { proto.RegisterFile("proto/index/index.proto", fileDescriptor_b5b8486092d5d3cd) }
 
 var fileDescriptor_b5b8486092d5d3cd = []byte{
-	// 228 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2f, 0x28, 0xca, 0x2f,
-	0xc9, 0xd7, 0xcf, 0xcc, 0x4b, 0x49, 0xad, 0x80, 0x90, 0x7a, 0x60, 0x11, 0x21, 0x56, 0x30, 0x47,
-	0x4a, 0x26, 0x3d, 0x3f, 0x3f, 0x3d, 0x27, 0x55, 0x3f, 0xb1, 0x20, 0x53, 0x3f, 0x31, 0x2f, 0x2f,
-	0xbf, 0x24, 0xb1, 0x24, 0x33, 0x3f, 0xaf, 0x18, 0xa2, 0x48, 0x49, 0x89, 0x8b, 0xc7, 0x13, 0xa4,
-	0x2c, 0x28, 0xb5, 0xb0, 0x34, 0xb5, 0xb8, 0x44, 0x48, 0x88, 0x8b, 0x25, 0x2f, 0x31, 0x37, 0x55,
-	0x82, 0x51, 0x81, 0x51, 0x83, 0x33, 0x08, 0xcc, 0x56, 0x52, 0xe3, 0xe2, 0x82, 0xaa, 0x29, 0xc8,
-	0xa9, 0x14, 0x92, 0xe0, 0x62, 0xcf, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x87, 0x29, 0x82, 0x71, 0x8d,
-	0x3a, 0x18, 0xb9, 0x58, 0xc1, 0x0a, 0x85, 0x1c, 0xb8, 0x58, 0x42, 0x40, 0xa6, 0x09, 0xeb, 0x41,
-	0x1c, 0x84, 0x6c, 0x85, 0x94, 0x20, 0xaa, 0x60, 0x41, 0x4e, 0xa5, 0x92, 0x40, 0xd3, 0xe5, 0x27,
-	0x93, 0x99, 0xb8, 0x94, 0x58, 0xf5, 0x4b, 0x52, 0x8b, 0x4b, 0xac, 0x18, 0xb5, 0x84, 0x6c, 0xb9,
-	0x58, 0x1c, 0x73, 0x32, 0x53, 0x89, 0x36, 0x81, 0x17, 0x6c, 0x02, 0xbb, 0x10, 0xab, 0x7e, 0x62,
-	0x4e, 0x66, 0xaa, 0x93, 0x1a, 0x97, 0x58, 0x66, 0xbe, 0x5e, 0x7a, 0x51, 0x41, 0xb2, 0x5e, 0x6a,
-	0x45, 0x62, 0x6e, 0x41, 0x4e, 0x6a, 0x31, 0x44, 0x8f, 0x13, 0xc4, 0x2b, 0x01, 0x20, 0xcf, 0x07,
-	0x30, 0x26, 0xb1, 0x81, 0x43, 0xc1, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x84, 0x56, 0xc7, 0xc0,
-	0x45, 0x01, 0x00, 0x00,
+	// 309 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x51, 0x41, 0x4b, 0xf4, 0x30,
+	0x14, 0x24, 0xdb, 0xf6, 0xfb, 0xec, 0x5b, 0x45, 0xcd, 0x8a, 0x96, 0x45, 0x70, 0xe9, 0x41, 0x16,
+	0x0f, 0x2d, 0xae, 0x37, 0x0f, 0xa2, 0xab, 0x28, 0xde, 0x96, 0xfc, 0x83, 0xb8, 0x0d, 0x21, 0x90,
+	0x6d, 0x62, 0x9b, 0xca, 0xee, 0xd5, 0xb3, 0x37, 0x7f, 0x9a, 0x7f, 0xc1, 0x1f, 0x22, 0x79, 0x29,
+	0xa2, 0x37, 0x2f, 0x65, 0xde, 0x74, 0xde, 0x4c, 0x86, 0x07, 0x47, 0xb6, 0x31, 0xce, 0x94, 0xaa,
+	0xae, 0xc4, 0x3a, 0x7c, 0x0b, 0x64, 0x68, 0x82, 0xc3, 0xf8, 0x58, 0x1a, 0x23, 0xb5, 0x28, 0xb9,
+	0x55, 0x25, 0xaf, 0x6b, 0xe3, 0xb8, 0x53, 0xa6, 0x6e, 0x83, 0x28, 0xbf, 0x87, 0xed, 0x47, 0x2f,
+	0x63, 0xe2, 0xb9, 0x13, 0xad, 0xa3, 0x7b, 0x10, 0x75, 0xaa, 0xca, 0xa2, 0x09, 0x99, 0xa6, 0xcc,
+	0x43, 0xcf, 0xd4, 0xdd, 0x2a, 0x23, 0x13, 0x32, 0x4d, 0x98, 0x87, 0x94, 0x42, 0x6c, 0xb9, 0x14,
+	0xd9, 0x00, 0x29, 0xc4, 0xf9, 0x35, 0xc4, 0x77, 0xdc, 0x71, 0x7a, 0x00, 0x89, 0x53, 0x4e, 0x0b,
+	0xd4, 0xa7, 0x2c, 0x0c, 0xde, 0x43, 0xad, 0x24, 0x2e, 0xa4, 0xcc, 0x43, 0xcc, 0x69, 0xf4, 0x77,
+	0x4e, 0xa3, 0xf3, 0x1b, 0x80, 0xfe, 0x25, 0x56, 0x6f, 0x7c, 0xc6, 0xd2, 0x54, 0xa2, 0x8f, 0x45,
+	0x4c, 0x4f, 0x20, 0xae, 0xb8, 0xe3, 0xd9, 0x60, 0x12, 0x4d, 0x87, 0xb3, 0x61, 0x11, 0xca, 0xfa,
+	0x58, 0x86, 0x3f, 0x66, 0x6f, 0x04, 0x12, 0xf4, 0xa0, 0xb7, 0x10, 0x2f, 0x4c, 0xeb, 0xe8, 0xa8,
+	0x17, 0xfd, 0xec, 0x38, 0xde, 0xff, 0x4d, 0x5a, 0xbd, 0xc9, 0x47, 0xaf, 0x1f, 0x9f, 0xef, 0x83,
+	0x9d, 0x7c, 0xab, 0x7c, 0x39, 0x2f, 0xad, 0x69, 0xdd, 0x25, 0x39, 0xa3, 0x57, 0x10, 0x3d, 0x88,
+	0xbf, 0x7b, 0xec, 0xa2, 0x47, 0x4a, 0xff, 0x7b, 0x0f, 0x29, 0xdc, 0xfc, 0x14, 0x0e, 0x95, 0x29,
+	0x64, 0x63, 0x97, 0x85, 0x58, 0xf3, 0x95, 0xd5, 0xa2, 0x0d, 0x5b, 0xf3, 0xd0, 0x74, 0xe1, 0x2f,
+	0xb0, 0x20, 0x4f, 0xff, 0xf0, 0x14, 0x17, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x4b, 0x72, 0x34,
+	0x8d, 0xca, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -144,8 +230,8 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type IndexClient interface {
 	// Test
-	Test(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error)
-	Alie(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error)
+	Post(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error)
+	Get(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error)
 }
 
 type indexClient struct {
@@ -156,18 +242,18 @@ func NewIndexClient(cc *grpc.ClientConn) IndexClient {
 	return &indexClient{cc}
 }
 
-func (c *indexClient) Test(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error) {
+func (c *indexClient) Post(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error) {
 	out := new(IndexReply)
-	err := c.cc.Invoke(ctx, "/index.Index/Test", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/index.Index/Post", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *indexClient) Alie(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error) {
+func (c *indexClient) Get(ctx context.Context, in *IndexRequest, opts ...grpc.CallOption) (*IndexReply, error) {
 	out := new(IndexReply)
-	err := c.cc.Invoke(ctx, "/index.Index/Alie", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/index.Index/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -177,57 +263,57 @@ func (c *indexClient) Alie(ctx context.Context, in *IndexRequest, opts ...grpc.C
 // IndexServer is the server API for Index service.
 type IndexServer interface {
 	// Test
-	Test(context.Context, *IndexRequest) (*IndexReply, error)
-	Alie(context.Context, *IndexRequest) (*IndexReply, error)
+	Post(context.Context, *IndexRequest) (*IndexReply, error)
+	Get(context.Context, *IndexRequest) (*IndexReply, error)
 }
 
 // UnimplementedIndexServer can be embedded to have forward compatible implementations.
 type UnimplementedIndexServer struct {
 }
 
-func (*UnimplementedIndexServer) Test(ctx context.Context, req *IndexRequest) (*IndexReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Test not implemented")
+func (*UnimplementedIndexServer) Post(ctx context.Context, req *IndexRequest) (*IndexReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Post not implemented")
 }
-func (*UnimplementedIndexServer) Alie(ctx context.Context, req *IndexRequest) (*IndexReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Alie not implemented")
+func (*UnimplementedIndexServer) Get(ctx context.Context, req *IndexRequest) (*IndexReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
 
 func RegisterIndexServer(s *grpc.Server, srv IndexServer) {
 	s.RegisterService(&_Index_serviceDesc, srv)
 }
 
-func _Index_Test_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Index_Post_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IndexRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IndexServer).Test(ctx, in)
+		return srv.(IndexServer).Post(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/index.Index/Test",
+		FullMethod: "/index.Index/Post",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IndexServer).Test(ctx, req.(*IndexRequest))
+		return srv.(IndexServer).Post(ctx, req.(*IndexRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Index_Alie_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Index_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IndexRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IndexServer).Alie(ctx, in)
+		return srv.(IndexServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/index.Index/Alie",
+		FullMethod: "/index.Index/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IndexServer).Alie(ctx, req.(*IndexRequest))
+		return srv.(IndexServer).Get(ctx, req.(*IndexRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -237,12 +323,12 @@ var _Index_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*IndexServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Test",
-			Handler:    _Index_Test_Handler,
+			MethodName: "Post",
+			Handler:    _Index_Post_Handler,
 		},
 		{
-			MethodName: "Alie",
-			Handler:    _Index_Alie_Handler,
+			MethodName: "Get",
+			Handler:    _Index_Get_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
