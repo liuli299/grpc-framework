@@ -4,7 +4,7 @@
 ```
 git clone https://github.com/liuli299/grpc-framework.git
 cd grpc-framework
-go run server/main.go                 //启动grpc服务
+go run server/main.go                 //启动grpc服务, 如果被墙不能下载依赖，请使用本地vendor： go run -mod=vendor server/main.go
 go run server/proxy.go                //启动代理服务。支持http请求
 go run client/main.go                 //grpc客户端请求示例
 http://localhost:8080/alie?name=mmd   //http请求示例
