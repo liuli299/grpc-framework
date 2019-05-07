@@ -1,6 +1,5 @@
 module github.com/liuli299/grpc-framework
 
-go 1.12
 
 require (
 	github.com/golang/protobuf v1.3.1
